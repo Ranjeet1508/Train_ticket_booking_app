@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Booking App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="container">
+        <div id="navbar">
+            <div class="leftNav">
+                Chhuk Chhuk
+            </div>
+            <div class="rightNav">
+                <p><a href="dashboard.html">Dashboard Page</a></p>
+                <p><a href="index.html">Registration Page</a></p>
+                <p><a href="booking.html">Booking Page</a></p>
+            </div>
+
+        </div>
+
+        <!------------- Booking Form  ------------->
+        <div id="bookingForm">
+            <form id="userForm">
+                <div>
+                <label>Unique ID : </label>
+                <input type="text" id="uniqueId" name="uniqueId" required>
+                </div>
+
+                <div>
+                <label for="name">Name</label>
+                <input id="name" type="text" placeholder="Enter your name" value="" minlength="4" required/>
+                </div>
+
+                <div>
+                <label for="age">Age</label>
+                <input id="age" type="number" placeholder="Enter your age" min="18" max="40" required/>
+                </div>
+
+                <div class="destination">
+                    <div>
+                        <label for="from">From</label>
+                        <select id="From" required>
+                            <option value="">--Select your Place--</option>
+                            <option value="Bangalore">Bangalore</option>
+                            <option value="Pune">Pune</option>
+                            <option value="Hyderabad">Hyderabad</option>
+                            <option value="Delhi">Delhi</option>
+                            <option value="Mumbai">Mumbai</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="to">To</label>
+                        <select id="To" required>
+                            <option value="">--Select your Destination--</option>
+                            <option value="Bangalore">Bangalore</option>
+                            <option value="Pune">Pune</option>
+                            <option value="Hyderabad">Hyderabad</option>
+                            <option value="Delhi">Delhi</option>
+                            <option value="Mumbai">Mumbai</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="journey-date">
+                    <label for="date">Date</label>
+                    <input id="date" type="date" required>
+                </div>
+
+                <div>
+                    <label for="seat">Seat Type</label>
+                    <select id="seatType" required>
+                        <option value="">--Select--</option>
+                        <option value="Ac">AC First Class</option>
+                        <option value="sleeper">Sleeper Class</option>
+                        <option value="second-class">Second Class</option>
+                        <option value="general">General</option>
+                    </select>
+                </div>
+
+                <div>
+                    <input id="submit-btn" type="submit" value="Submit">
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+
+</html>
