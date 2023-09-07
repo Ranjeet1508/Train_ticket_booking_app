@@ -1,13 +1,16 @@
-document.addEventListener('DOMContentLoaded', function() {
+//document.addEventListener('DOMContentLoaded', function() {
     const registrationForm = document.getElementById('userForm');
     const registerButton = document.getElementById('submit-btn');
 
     // Load existing registrations from LocalStorage
     let registrations = JSON.parse(localStorage.getItem('registrations')) || [];
+    let userListLength = registrations.length+1;
+    document.getElementById("uniqueId").innerText = userListLength;
+    console.log(userListLength);
 
     registerButton.addEventListener('click', function() {
         // Get form input values
-        const uniqueId = document.getElementById('uniqueId').value;
+        const uniqueId = document.getElementById('uniqueId').innerText;
         const name = document.getElementById('name').value;
         const age = parseInt(document.getElementById('age').value);
         const fromStation = document.getElementById('From').value;
@@ -42,6 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
             registrationForm.reset();
 
             alert("Registration successful!");
+            window.location.reload();
         }
     });
-});
+//});

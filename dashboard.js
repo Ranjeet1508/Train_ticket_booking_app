@@ -6,19 +6,20 @@ document.addEventListener("DOMContentLoaded", function () {
     function generateOTP() {
         return Math.floor(1000 + Math.random() * 9000);
     }
-
+    
     // Function to add a new user row to the table
     function addUserRow(user) {
         const table = document.getElementById("userTable");
         const row = table.insertRow();
         row.insertCell().textContent = user.name;
-        row.insertCell().textContent = user.email;
+        row.insertCell().textContent = user.uniqueId;
         row.insertCell().textContent = user.age;
         row.insertCell().textContent = user.fromStation;
         row.insertCell().textContent = user.toStation;
         row.insertCell().textContent = user.seatType;
         const otpCell = row.insertCell();
         otpCell.textContent = generateOTP();
+        const btnCell = row.insertCell();
         const rejectButton = document.createElement("button");
         rejectButton.textContent = "Reject";
         rejectButton.style.color = "red";
@@ -26,16 +27,18 @@ document.addEventListener("DOMContentLoaded", function () {
         rejectButton.addEventListener("click", () => {
             table.deleteRow(row.rowIndex);
             // Remove the user from localStorage
-            users = users.filter(u => u.email !== user.email);
-            localStorage.setItem("users", JSON.stringify(users));
+            users = users.filter(u => u.uniqueId !== user.uniqueId);
+            localStorage.setItem("registrations", JSON.stringify(users));
         });
-        otpCell.appendChild(rejectButton);
+        btnCell.appendChild(rejectButton);
+        console.log(otpCell.textContent)
         const confirmButton = document.createElement("button");
         confirmButton.textContent = "Confirm";
         confirmButton.style.color = "green";
         confirmButton.classList.add("confirm-button");
         confirmButton.addEventListener("click", () => {
             const enteredOTP = prompt("Enter OTP:");
+            console.log(enteredOTP)
             if (enteredOTP === otpCell.textContent) {
                 alert(`${user.name} added to waiting list`);
                 setTimeout(() => {
@@ -45,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     alert(`Ticket booked for ${user.journeyDate}`);
                     // Remove the user from the table and store in localStorage under "booked"
                     table.deleteRow(row.rowIndex);
-                    users = users.filter(u => u.email !== user.email);
+                    users = users.filter(u => u.uniqueId !== user.uniqueId);
                     localStorage.setItem("users", JSON.stringify(users));
                     const bookedUsers = JSON.parse(localStorage.getItem("booked")) || [];
                     bookedUsers.push(user);
@@ -55,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 alert("Invalid OTP. User not confirmed.");
             }
         });
-        otpCell.appendChild(confirmButton);
+        btnCell.appendChild(confirmButton);
     }
 
     // Function to filter users by seat type
@@ -87,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const headers = table.createTHead();
         const headerRow = headers.insertRow();
         headerRow.insertCell().textContent = "Name";
-        headerRow.insertCell().textContent = "Email";
+        headerRow.insertCell().textContent = "Unique ID";
         headerRow.insertCell().textContent = "Age";
         headerRow.insertCell().textContent = "From Station";
         headerRow.insertCell().textContent = "To Station";
@@ -106,16 +109,16 @@ document.addEventListener("DOMContentLoaded", function () {
     renderTable(users);
 
     // Add event listeners for filter and sort
-    document.getElementById("filterButton").addEventListener("click", () => {
-        const seatType = document.getElementById("seatTypeFilter").value;
-        filterUsers(seatType);
-    });
+    // document.getElementById("filterButton").addEventListener("click", () => {
+    //     const seatType = document.getElementById("seatTypeFilter").value;
+    //     filterUsers(seatType);
+    // });
 
-    document.getElementById("sortAgeButton").addEventListener("click", () => {
-        sortUsersByAge();
-    });
+    // document.getElementById("sortAgeButton").addEventListener("click", () => {
+    //     sortUsersByAge();
+    // });
 
-    document.getElementById("sortJourneyDateButton").addEventListener("click", () => {
-        sortUsersByJourneyDate();
-    });
-});
+    // document.getElementById("sortJourneyDateButton").addEventListener("click", () => {
+    //     sortUsersByJourneyDate();
+    // });
+})
