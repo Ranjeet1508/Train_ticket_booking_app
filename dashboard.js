@@ -11,8 +11,8 @@ document.addEventListener("DOMContentLoaded", function () {
     function addUserRow(user) {
         const table = document.getElementById("userTable");
         const row = table.insertRow();
-        row.insertCell().textContent = user.name;
         row.insertCell().textContent = user.uniqueId;
+        row.insertCell().textContent = user.name;
         row.insertCell().textContent = user.age;
         row.insertCell().textContent = user.fromStation;
         row.insertCell().textContent = user.toStation;
@@ -31,14 +31,12 @@ document.addEventListener("DOMContentLoaded", function () {
             localStorage.setItem("registrations", JSON.stringify(users));
         });
         btnCell.appendChild(rejectButton);
-        console.log(otpCell.textContent)
         const confirmButton = document.createElement("button");
         confirmButton.textContent = "Confirm";
         confirmButton.style.color = "green";
         confirmButton.classList.add("confirm-button");
         confirmButton.addEventListener("click", () => {
             const enteredOTP = prompt("Enter OTP:");
-            console.log(enteredOTP)
             if (enteredOTP === otpCell.textContent) {
                 alert(`${user.name} added to waiting list`);
                 setTimeout(() => {
@@ -46,13 +44,18 @@ document.addEventListener("DOMContentLoaded", function () {
                 }, 5000);
                 setTimeout(() => {
                     alert(`Ticket booked for ${user.journeyDate}`);
-                    // Remove the user from the table and store in localStorage under "booked"
+                    // Remove the user from the table and updating the registrations list
                     table.deleteRow(row.rowIndex);
+                   
+                    //finding the booked users and sending the booked users to booked localStorage
+                    let newBookedUser = users.filter(u => u.uniqueId === user.uniqueId);
+                    console.log(newBookedUser);
+                    let AllbookedUsers = JSON.parse(localStorage.getItem("booked")) || [];
+                    AllbookedUsers.push(newBookedUser);
+                    localStorage.setItem("booked", JSON.stringify(AllbookedUsers)); 
                     users = users.filter(u => u.uniqueId !== user.uniqueId);
-                    localStorage.setItem("users", JSON.stringify(users));
-                    const bookedUsers = JSON.parse(localStorage.getItem("booked")) || [];
-                    bookedUsers.push(user);
-                    localStorage.setItem("booked", JSON.stringify(bookedUsers));
+                    console.log(users);                   
+                    localStorage.setItem("registrations",JSON.stringify(users))                               
                 }, 10000);
             } else {
                 alert("Invalid OTP. User not confirmed.");
@@ -61,11 +64,31 @@ document.addEventListener("DOMContentLoaded", function () {
         btnCell.appendChild(confirmButton);
     }
 
+
+    // Dom for filtering
+
+    document.getElementById("filter").addEventListener('change', (e) => {
+        filterUsers(e.target.value);
+    })
+
     // Function to filter users by seat type
     function filterUsers(seatType) {
         const filteredUsers = users.filter(user => user.seatType === seatType);
         renderTable(filteredUsers);
     }
+
+    
+   // Dom for sorting
+    document.getElementById("sorting").addEventListener('change',(e) => {
+        myOption = e.target.value;
+
+        if(myOption=='age'){
+            sortUsersByAge();
+        }
+        else if(myOption=='date'){
+            sortUsersByJourneyDate();
+        }
+    })
 
     // Function to sort users by age
     function sortUsersByAge() {
@@ -89,15 +112,15 @@ document.addEventListener("DOMContentLoaded", function () {
         // Create table headers
         const headers = table.createTHead();
         const headerRow = headers.insertRow();
+        headerRow.insertCell().textContent = "ID";
         headerRow.insertCell().textContent = "Name";
-        headerRow.insertCell().textContent = "Unique ID";
         headerRow.insertCell().textContent = "Age";
         headerRow.insertCell().textContent = "From Station";
         headerRow.insertCell().textContent = "To Station";
         headerRow.insertCell().textContent = "Seat Type";
         headerRow.insertCell().textContent = "OTP";
-        headerRow.insertCell(); // Empty cell for Reject button
-        headerRow.insertCell(); // Empty cell for Confirm button
+        headerRow.insertCell(); // Empty cell for Reject button & confirm button
+      
 
         // Add user data to the table
         data.forEach(user => {
@@ -108,17 +131,5 @@ document.addEventListener("DOMContentLoaded", function () {
     // Initialize the table with user data
     renderTable(users);
 
-    // Add event listeners for filter and sort
-    // document.getElementById("filterButton").addEventListener("click", () => {
-    //     const seatType = document.getElementById("seatTypeFilter").value;
-    //     filterUsers(seatType);
-    // });
-
-    // document.getElementById("sortAgeButton").addEventListener("click", () => {
-    //     sortUsersByAge();
-    // });
-
-    // document.getElementById("sortJourneyDateButton").addEventListener("click", () => {
-    //     sortUsersByJourneyDate();
-    // });
+   
 })

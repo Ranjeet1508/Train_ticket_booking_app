@@ -1,10 +1,13 @@
+
+
 //document.addEventListener('DOMContentLoaded', function() {
     const registrationForm = document.getElementById('userForm');
     const registerButton = document.getElementById('submit-btn');
 
     // Load existing registrations from LocalStorage
     let registrations = JSON.parse(localStorage.getItem('registrations')) || [];
-    let userListLength = registrations.length+1;
+    let bookedUser = JSON.parse(localStorage.getItem("booked")) || [];
+    let userListLength = registrations.length + bookedUser.length +  1;
     document.getElementById("uniqueId").innerText = userListLength;
     console.log(userListLength);
 

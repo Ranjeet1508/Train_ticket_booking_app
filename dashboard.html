@@ -4,38 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ticket Booking App</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <script src="https://kit.fontawesome.com/22f5e07808.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
     <div id="container">
-        <div id="navbar">
-            <div class="leftNav">
-                Chhuk Chhuk
+        <div id="containter">
+            <div class="navbar">
+                <div class="leftNav">
+                    <img src="https://creazilla-store.fra1.digitaloceanspaces.com/emojis/54585/locomotive-emoji-clipart-md.png" alt="train">
+                    <p>Chhuk Chhuk</p>
+                </div>
+                <div class="rightNav">
+                    <ul class="nav-list">
+                        <li><a class="nav-link" href="dashboard.html">Dashboard Page</a></li>
+                        <li><a class="nav-link" href="index.html">Registration Page</a></li>
+                        <li><a class="nav-link" href="booking.html">Booking Page</a></li>
+                    </ul>
+                </div>
+    
+                <div class="mobile-nav">
+                    <i id="menu-icon" class="fa-solid fa-bars"></i>
+                    <i id="close-icon" class="fa-solid fa-xmark"></i>
+                </div>
+    
             </div>
-            <div class="rightNav">
-                <p><a href="dashboard.html">Dashboard Page</a></p>
-                <p><a href="index.html">Registration Page</a></p>
-                <p><a href="booking.html">Booking Page</a></p>
-            </div>
-        </div>
 
         <div class="allusers">
             <h1 id="user-heading">All users Details</h1>
         
+            <div class="filterSection">
+                <select id="sorting">
+                    <option value="">Sort</option>
+                    <option value="age"> sort by age</option>
+                    <option value="date"> sort by date</option>
+                </select>
+
+                <select id="filter">
+                    <option value="">Filter By Seat</option>
+                    <option value="AC First Class">AC First Class</option>
+                    <option value="Sleeper Class">Sleeper Class</option>
+                    <option value="Second Class">Second Class</option>
+                    <option value="General">General</option>
+                </select>
+            </div>
             <div class="table">
                 <table id="userTable">
                     <thead>
-                        <tr>
-                            <th>Unique ID</th>
-                            <th>Name</th>
-                            <th>Age</th>
-                            <th>From Station</th>
-                            <th>To Station</th>
-                            <th>Journey Date</th>
-                            <th>Seat Type</th>
-                            <th>OTP</th>
-                            <th>Actions</th>
-                        </tr>
+                       
                     </thead>
 
                     <tbody></tbody>
@@ -44,5 +62,6 @@
         </div>
     </div>
     <script src="dashboard.js"></script>
+    <script src="navbar.js"></script>
 </body>
 </html>

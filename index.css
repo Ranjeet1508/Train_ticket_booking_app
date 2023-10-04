@@ -1,0 +1,56 @@
+#heading{
+    text-align: center;
+    margin-top: 30px;
+}
+
+
+#bookingForm{
+    margin-top: 5vw;
+    display: flex;
+    justify-content: center;
+}
+
+
+#userForm{
+    width: 80vw;
+    padding: 1rem;
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+#userForm div{
+    margin-left: 2vw;
+}
+
+label{
+    font-size: 18px;
+    font-weight: 600;
+}
+
+input{
+    width: 50vw;
+    height: 30px;
+    border-radius: 10px;
+   
+}
+
+select{
+    height: 25px;
+    border-radius: 10px;
+}
+
+#destination{
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+}
+
+#submit-btn{
+    background: #ffcccc;
+    border-radius: 10px;
+    width: 7rem;
+
+}

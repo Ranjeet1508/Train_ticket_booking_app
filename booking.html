@@ -4,20 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ticket Booking App</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="navbar.css">
+    <script src="https://kit.fontawesome.com/22f5e07808.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
     <div id="container">
-        <div id="navbar">
-            <div class="leftNav">
-                Chhuk Chhuk
+        <div id="containter">
+            <div class="navbar">
+                <div class="leftNav">
+                    <img src="https://creazilla-store.fra1.digitaloceanspaces.com/emojis/54585/locomotive-emoji-clipart-md.png" alt="train">
+                    <p>Chhuk Chhuk</p>
+                </div>
+                <div class="rightNav">
+                    <ul class="nav-list">
+                        <li><a class="nav-link" href="dashboard.html">Dashboard Page</a></li>
+                        <li><a class="nav-link" href="index.html">Registration Page</a></li>
+                        <li><a class="nav-link" href="booking.html">Booking Page</a></li>
+                    </ul>
+                </div>
+    
+                <div class="mobile-nav">
+                    <i id="menu-icon" class="fa-solid fa-bars"></i>
+                    <i id="close-icon" class="fa-solid fa-xmark"></i>
+                </div>
             </div>
-            <div class="rightNav">
-                <p><a href="dashboard.html">Dashboard Page</a></p>
-                <p><a href="index.html">Registration Page</a></p>
-                <p><a href="booking.html">Booking Page</a></p>
+
+        <div id="bookedUser">
+            <h1>Booked User Details</h1>
+
+            <div class="table">
+                <table id="booked-tableId">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>uniqueId</th>
+                            <th>Age</th>
+                            <th>From Station</th>
+                            <th>To Station</th>
+                            <th>Seat Type</th>
+                        </tr>
+                        
+                    </thead>
+
+                    <tbody></tbody>
+                </table>
             </div>
         </div>
     </div>
+    <script src="booking.js"></script>
+    <script src="navbar.js"></script>
 </body>
 </html>

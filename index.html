@@ -5,45 +5,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ticket Booking App</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="navbar.css">
+    <script src="https://kit.fontawesome.com/22f5e07808.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <div id="container">
-        <div id="navbar">
+    <div id="containter">
+
+        <!-- this is navbar section -->
+
+        <div class="navbar">
             <div class="leftNav">
-                Chhuk Chhuk
+                <img src="https://creazilla-store.fra1.digitaloceanspaces.com/emojis/54585/locomotive-emoji-clipart-md.png" alt="train">
+                <p>Chhuk Chhuk</p>
             </div>
             <div class="rightNav">
-                <p><a href="dashboard.html">Dashboard Page</a></p>
-                <p><a href="index.html">Registration Page</a></p>
-                <p><a href="booking.html">Booking Page</a></p>
+                <ul class="nav-list">
+                    <li><a class="nav-link" href="dashboard.html">Dashboard Page</a></li>
+                    <li><a class="nav-link" href="index.html">Registration Page</a></li>
+                    <li><a class="nav-link" href="booking.html">Booking Page</a></li>
+                </ul>
             </div>
 
+            <div class="mobile-nav">
+                <i id="menu-icon" class="fa-solid fa-bars"></i>
+                <i id="close-icon" class="fa-solid fa-xmark"></i>
+            </div>
         </div>
 
         <!------------- Booking Form  ------------->
+        <h2 id="heading"> Ticket Registration Form</h2>
         <div id="bookingForm">
             <form id="userForm">
                 <div>
-                <h3>Unique ID : <span id="uniqueId"></span></h3>
+                    <h3>Unique ID : <span id="uniqueId"></span></h3>
                 </div>
 
                 <div>
-                <label for="name">Name</label>
-                <input id="name" type="text" placeholder="Enter your name" value="" minlength="4" required/>
+                    <label for="name">Name</label>
+                    <br>
+                    <input id="name" type="text" placeholder="Enter your name" value="" minlength="4" required />
                 </div>
 
                 <div>
-                <label for="age">Age</label>
-                <input id="age" type="number" placeholder="Enter your age" min="18" max="40" required/>
+                    <label for="age">Age</label>
+                    <br>
+                    <input id="age" type="number" placeholder="Enter your age" min="18" max="40" required />
                 </div>
 
-                <div class="destination">
+                <div id="destination">
                     <div>
                         <label for="from">From</label>
+                        <br>
                         <select id="From" required>
-                            <option value="">--Select your Place--</option>
+                            <option value="">--Select--</option>
                             <option value="Bangalore">Bangalore</option>
                             <option value="Pune">Pune</option>
                             <option value="Hyderabad">Hyderabad</option>
@@ -54,8 +70,9 @@
 
                     <div>
                         <label for="to">To</label>
+                        <br>
                         <select id="To" required>
-                            <option value="">--Select your Destination--</option>
+                            <option value="">--Select--</option>
                             <option value="Bangalore">Bangalore</option>
                             <option value="Pune">Pune</option>
                             <option value="Hyderabad">Hyderabad</option>
@@ -67,17 +84,19 @@
 
                 <div class="journey-date">
                     <label for="date">Date</label>
+                    <br>
                     <input id="date" type="date" required>
                 </div>
 
                 <div>
                     <label for="seat">Seat Type</label>
+                    <br>
                     <select id="seatType" required>
                         <option value="">--Select--</option>
-                        <option value="Ac">AC First Class</option>
-                        <option value="sleeper">Sleeper Class</option>
-                        <option value="second-class">Second Class</option>
-                        <option value="general">General</option>
+                        <option value="AC First Class">AC First Class</option>
+                        <option value="Sleeper Class">Sleeper Class</option>
+                        <option value="Second Class">Second Class</option>
+                        <option value="General">General</option>
                     </select>
                 </div>
 
@@ -90,6 +109,7 @@
     </div>
 
     <script src="index.js"></script>
+    <script src="navbar.js"></script>
 </body>
 
 </html>
