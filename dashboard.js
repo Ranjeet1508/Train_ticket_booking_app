@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     // Check if localStorage already contains registered users
     let users = JSON.parse(localStorage.getItem("registrations")) || [];
+    let AllbookedUsers = JSON.parse(localStorage.getItem("booked")) || [];
     
     // Function to generate a random 4-digit OTP
     function generateOTP() {
@@ -50,8 +51,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     //finding the booked users and sending the booked users to booked localStorage
                     let newBookedUser = users.filter(u => u.uniqueId === user.uniqueId);
                     console.log(newBookedUser);
-                    let AllbookedUsers = JSON.parse(localStorage.getItem("booked")) || [];
-                    AllbookedUsers.push(newBookedUser);
+                    newBookedUser.map((elem) => 
+                        AllbookedUsers.push(elem)
+                    )
                     localStorage.setItem("booked", JSON.stringify(AllbookedUsers)); 
                     users = users.filter(u => u.uniqueId !== user.uniqueId);
                     console.log(users);                   

@@ -1,0 +1,19 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#bookedUser{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+table,th,tr,td{
+    padding: 2px;
+    border: 2px solid;
+    border-collapse: collapse;
+}
